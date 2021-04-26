@@ -29,7 +29,7 @@ class list_view(admin.ModelAdmin):
     date_hierarchy = 'date'
     search_fields = ('localizador',)
     formfield_overrides = {
-        models.CharField: {'widget': TextInput(attrs={'size':'5'})},
+        models.CharField: {'widget': TextInput(attrs={'size':'7'})},
         models.TextField: {'widget': Textarea(attrs={'rows':5, 'cols':40})},
     }
 
