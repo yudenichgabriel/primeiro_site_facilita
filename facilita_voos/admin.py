@@ -1,4 +1,4 @@
-from django.forms import TextInput, Textarea
+from django.forms import *
 from django.contrib import admin
 from .models import *
 
@@ -29,10 +29,15 @@ class list_view(admin.ModelAdmin):
     date_hierarchy = 'date'
     search_fields = ('localizador',)
     formfield_overrides = {
-        models.CharField: {'widget': TextInput(attrs={'size':'7'})},
-        models.TextField: {'widget': Textarea(attrs={'rows':5, 'cols':40})},
+        models.CharField: {'widget': TextInput(attrs={'size':'10'})},
+        #models.TextField: {'widget': Textarea(attrs={'rows':5, 'cols':40})},
+        models.DecimalField: {'widget': TextInput(attrs={'size':'10', 'floatformat':'2'})},
+        #models.ForeignKey: {'widget': __all__(attrs={'size':'10'})},
     }
-
+    class Media:
+        css = {
+            'all': ('css/admin.css',)
+        }
 
 admin.site.register(company)
 admin.site.register(distribute)
